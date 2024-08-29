@@ -10,3 +10,7 @@ def test_add_check_no_error_if_input_is_string():
 def test_add_check_error_if_input_is_not_string():
     with pytest.raises(ValueError):
         add_string(1)
+
+def test_add_should_return_zero_for_empty_string():
+    result = add_string("")
+    assert result == 0
