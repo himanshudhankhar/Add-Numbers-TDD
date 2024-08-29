@@ -4,4 +4,14 @@ def add_string(input):
     input = input.strip()
     if input == "":
         return 0
-    return int(input)
+    input = give_input_arr(input)
+    return add_list_of_numbers(input)
+
+def give_input_arr(input_str):
+    return input_str.split(',')
+
+def add_list_of_numbers(input):
+    result = 0
+    for i in input:
+        result += int(i)
+    return result

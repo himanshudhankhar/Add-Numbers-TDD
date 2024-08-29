@@ -1,5 +1,5 @@
 import sys
-from string_adder import add_string
+from source.string_adder import add_string
 
 def main():
     if len(sys.argv) != 2:

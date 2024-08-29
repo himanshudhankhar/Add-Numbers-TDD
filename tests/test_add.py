@@ -20,3 +20,13 @@ def test_add_for_should_return_same_value_for_single_digit_number():
     assert result == 2
     result = add_string("5")
     assert result == 5
+
+def test_should_throw_value_error_when_input_string_is_not_int_format():
+    with pytest.raises(ValueError):
+        add_string("abc")
+
+def test_add_numbers_separated_by_comma():
+    result = add_string("1,2")
+    assert result == 3
+    result = add_string("1,2,3")
+    assert result == 6
