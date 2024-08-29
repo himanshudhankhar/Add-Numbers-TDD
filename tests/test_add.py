@@ -30,3 +30,11 @@ def test_add_numbers_separated_by_comma():
     assert result == 3
     result = add_string("1,2,3")
     assert result == 6
+
+def test_add_numbers_separated_by_comma_or_newline_but_not_both():
+    result = add_string("1,2\n3")
+    assert result == 6
+    result = add_string("1\n2\n3,4")
+    assert result == 10
+    result = add_string("\n1\n2\n3,5,")
+    assert result == 11

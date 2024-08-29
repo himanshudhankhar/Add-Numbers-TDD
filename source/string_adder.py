@@ -4,11 +4,19 @@ def add_string(input):
     input = input.strip()
     if input == "":
         return 0
-    input = give_input_arr(input)
+    input = generate_input_arr(input)
     return add_list_of_numbers(input)
 
-def give_input_arr(input_str):
-    return input_str.split(',')
+def generate_input_arr(input_str):
+    input =  input_str.split(',')
+    result = []
+    for i in input:
+        if i == "":
+            continue
+        i_arr = i.split('\n')
+        result = result + i_arr
+    return result
+    
 
 def add_list_of_numbers(input):
     result = 0
