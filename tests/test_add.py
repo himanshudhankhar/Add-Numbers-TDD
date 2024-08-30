@@ -38,3 +38,8 @@ def test_add_numbers_separated_by_comma_or_newline_but_not_both():
     assert result == 10
     result = add_string("\n1\n2\n3,5,")
     assert result == 11
+
+def test_should_throw_error_when_some_negative_number_is_given_as_input():
+    with pytest.raises(ValueError) as err:
+        add_string("1,-2,-3")
+    assert str(err.value.args[0]) == 'Negative numbers not allowed -2 -3'

@@ -20,6 +20,16 @@ def generate_input_arr(input_str):
 
 def add_list_of_numbers(input):
     result = 0
+    negative_numbers = []
     for i in input:
-        result += int(i)
+        i = int(i)
+        if i < 0:
+            negative_numbers.append(i)
+        result += i
+    if len(negative_numbers) != 0:
+        raise ValueError(generate_negative_numbers_err_message(negative_numbers))
     return result
+
+def generate_negative_numbers_err_message(numbers):
+    numbers = [ str(i) for i in numbers]
+    return "Negative numbers not allowed " + " ".join(numbers)
