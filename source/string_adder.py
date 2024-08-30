@@ -4,11 +4,12 @@ def add_string(input):
     input = input.strip()
     if input == "":
         return 0
-    input = generate_input_arr(input)
+    delimiter, input = extract_delimiter(input)
+    input = generate_input_arr(input, delimiter)
     return add_list_of_numbers(input)
 
-def generate_input_arr(input_str):
-    input =  input_str.split(',')
+def generate_input_arr(input_str, delimiter):
+    input =  input_str.split(delimiter[:1])
     result = []
     for i in input:
         if i == "":
@@ -33,3 +34,19 @@ def add_list_of_numbers(input):
 def generate_negative_numbers_err_message(numbers):
     numbers = [ str(i) for i in numbers]
     return "Negative numbers not allowed " + " ".join(numbers)
+
+def extract_delimiter(input):
+    first_char = input[:1]
+    if first_char.isnumeric() == False:
+        delimiter = first_char
+        modified_input = input[2:]
+        return delimiter, modified_input
+    else:
+        delimiter = ','
+        for i in input:
+            if str(i).isnumeric() == False and str(i) != '\n':
+                delimiter = i
+                return delimiter, input
+        return delimiter, input
+
+    

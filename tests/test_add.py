@@ -43,3 +43,13 @@ def test_should_throw_error_when_some_negative_number_is_given_as_input():
     with pytest.raises(ValueError) as err:
         add_string("1,-2,-3")
     assert str(err.value.args[0]) == 'Negative numbers not allowed -2 -3'
+
+def test_add_support_for_different_delimiters():
+        result = add_string(";\n1;2;3")
+        assert result == 6
+        result = add_string(";\n1\n4;3")
+        assert result == 8
+        result = add_string("-\n1\n4-3")
+        assert result == 8
+        result = add_string("|\n1\n4|3")
+        assert result == 8
