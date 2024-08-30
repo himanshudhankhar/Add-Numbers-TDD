@@ -57,3 +57,8 @@ def test_check_if_minus_sign_is_not_picked_as_delimiter_when_it_was_not_intended
     with pytest.raises(ValueError) as err:
         add_string("-1,2,3")
     assert str(err.value.args[0]) == 'Negative numbers not allowed -1'
+
+def test_check_error_raised_when_delimiter_is_used():
+    with pytest.raises(ValueError) as err:
+        add_string(";\n-1;2;3")
+    assert str(err.value.args[0]) == 'Negative numbers not allowed -1'
