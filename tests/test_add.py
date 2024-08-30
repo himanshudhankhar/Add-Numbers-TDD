@@ -53,3 +53,7 @@ def test_add_support_for_different_delimiters():
         assert result == 8
         result = add_string("|\n1\n4|3")
         assert result == 8
+def test_check_if_minus_sign_is_not_picked_as_delimiter_when_it_was_not_intended_as_delimiter():
+    with pytest.raises(ValueError) as err:
+        add_string("-1,2,3")
+    assert str(err.value.args[0]) == 'Negative numbers not allowed -1'

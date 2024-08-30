@@ -37,6 +37,9 @@ def generate_negative_numbers_err_message(numbers):
 
 def extract_delimiter(input):
     first_char = input[:1]
+    if first_char == '-' and input[1:2].isnumeric():
+        return ',', input
+    
     if first_char.isnumeric() == False:
         delimiter = first_char
         modified_input = input[2:]
